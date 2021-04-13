@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head><title>Taller MongoDB</title></head>
+<body>
+    <h1>Taller de MongoDB</h1>
+    <input type="text" id="nombre" name="nombre">
+    <button type="button" onclick="buscarNombre()">Buscar</button>
+    </form>
+
+    <script>
+        const Http = new XMLHttpRequest();
+        
+        function buscarNombre(){
+            busqueda = document.getElementById("nombre").value;
+            const url = 'http://localhost:3000/busqueda_nombre/' + busqueda;
+            Http.open("GET", url);
+            Http.send();
+        }
+
+        Http.onreadystatechange=function(){
+            if(this.readyState==4){
+                console.log(Http.responseText)
+            }
+        }
+    </script>
+</body>
